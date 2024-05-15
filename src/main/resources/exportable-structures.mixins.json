@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.binarydev.exportablestructures.exportablestructures.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ScreenInvoker",
+    "StructureBlockBlockEntityAccessor",
+    "StructureBlockScreenAccessor",
+    "StructureBlockScreenMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

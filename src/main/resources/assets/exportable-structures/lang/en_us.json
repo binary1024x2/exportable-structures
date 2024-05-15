@@ -1,0 +1,16 @@
+{
+  "exportable_structures.message.failed_to_get_info": "Failed to get structure block information",
+  "exportable_structures.message.saved_structure_file": "Exported structure '%s' to '%s'",
+  "exportable_structures.message.unable_to_export": "Unable to export structure",
+  "exportable_structures.button.export": "Export",
+  "exportable_structures.screen.export_structure": "Export Structure",
+  "exportable_structures.button.create_folder": "Create Folder",
+  "exportable_structures.button.delete": "Delete",
+  "exportable_structures.button.up": "Up",
+  "exportable_structures.button.save": "Save",
+  "exportable_structures.button.cancel": "Cancel",
+  "exportable_structures.button.open_folder": "Open",
+  "exportable_structures.button.create": "Create",
+  "exportable_structures.message.confirm_delete": "Do you want to delete '%s'?",
+  "exportable_structures.message.failed_save_structure_file": "Failed to export structure '%s' to '%s'"
+}

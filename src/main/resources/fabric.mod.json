@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "exportable-structures",
+  "version": "${version}",
+  "name": "exportable-structures",
+  "description": "A mod that lets you export structures using structure blocks outside of the .minecraft folder. Useful when custom launchers break the structure blocks.",
+  "authors": [
+    "binary1024"
+  ],
+  "contact": {
+    "repo": "https://github.com/binary1024x2/exportable-structures"
+  },
+  "license": "Apache-2.0",
+  "icon": "assets/exportable-structures/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "xyz.binarydev.exportablestructures.exportablestructures.client.ExportableStructuresClient"
+    ],
+    "main": [
+      "xyz.binarydev.exportablestructures.exportablestructures.ExportableStructures"
+    ]
+  },
+  "mixins": [
+    "exportable-structures.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "exportable_structures.message.failed_to_get_info": "Fallo al obtener la informacion del bloque de estructura",
+  "exportable_structures.message.saved_structure_file": "Se ha exportado la estructura '%s' a '%s'",
+  "exportable_structures.message.unable_to_export": "No se puede exportar la estructura",
+  "exportable_structures.button.export": "Exportar",
+  "exportable_structures.screen.export_structure": "Exportar Estructura",
+  "exportable_structures.button.create_folder": "Crear Carpeta",
+  "exportable_structures.button.delete": "Eliminar",
+  "exportable_structures.button.up": "Arriba",
+  "exportable_structures.button.save": "Guardar",
+  "exportable_structures.button.cancel": "Cancelar",
+  "exportable_structures.button.open_folder": "Abrir",
+  "exportable_structures.button.create": "Crear",
+  "exportable_structures.message.confirm_delete": "¿Quieres eliminar '%s'?",
+  "exportable_structures.message.failed_save_structure_file": "No se pudo exportar la estructura '%s' a '%s'"
+}
