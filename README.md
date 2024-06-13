@@ -2,6 +2,8 @@
 
 # Exportable Structures
 
+![Environment](https://img.shields.io/badge/environment-client-1976d2?style=flat-square) ![Loader](https://img.shields.io/badge/mod%20loader-fabric-d64541?style=flat-square) ![GitHub Release](https://img.shields.io/github/v/release/binary1024x2/exportable-structures)
+
 This mod exists for the cases when a custom launcher breaks the structure blocks in Minecraft.
 
 This mod adds a button **Export** in the **Save** mode of the structure block screen that lets you chose a folder where to export the structure.

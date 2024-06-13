@@ -46,7 +46,7 @@ public class ExportableStructures implements ModInitializer {
             StructureTemplateManager manager = server.getStructureTemplateManager();
             StructureTemplate template;
             try {
-                template = manager.getTemplateOrBlank(new Identifier(structureBlock.getTemplateName()));
+                template = manager.getTemplateOrBlank(Identifier.of(structureBlock.getTemplateName()));
             } catch (InvalidIdentifierException ex) {
                 LOGGER.warn("Failed to create template", ex);
                 context.player().sendMessage(Text.translatable("exportable_structures.message.unable_to_export"), false);
@@ -58,7 +58,7 @@ public class ExportableStructures implements ModInitializer {
             try {
                 FileStructureTemplateManager fileManager = new FileStructureTemplateManager(manager);
                 File target = new File(payload.getPath());
-                if (fileManager.saveToFile(target, new Identifier(structureBlock.getTemplateName()))) {
+                if (fileManager.saveToFile(target, Identifier.of(structureBlock.getTemplateName()))) {
                     context.player().sendMessage(Text.translatable("exportable_structures.message.saved_structure_file", structureBlock.getTemplateName(), target.toString()), false);
                 } else {
                     context.player().sendMessage(Text.translatable("exportable_structures.message.failed_save_structure_file", structureBlock.getTemplateName(), target.toString()), false);

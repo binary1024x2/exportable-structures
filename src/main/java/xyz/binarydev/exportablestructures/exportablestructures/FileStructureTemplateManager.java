@@ -64,7 +64,7 @@ public class FileStructureTemplateManager {
 
     public Optional<StructureTemplate> loadFromFile(File file) {
         String md5 = getPathHash(file);
-        Identifier id = new Identifier("exportable-structures", md5);
+        Identifier id = Identifier.of("exportable-structures", md5);
         loadedStructures.putIfAbsent(id, file);
         return loadStructure(id);
     }
