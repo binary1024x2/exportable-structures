@@ -11,10 +11,10 @@ import java.io.File;
 public class CreateFolderScreen extends Screen {
 
     private TextFieldWidget nameWidget;
-    private final ExportStructureScreen parent;
+    private final ImportExportStructureScreen parent;
     private final File targetPath;
 
-    public CreateFolderScreen(File targetPath, ExportStructureScreen parent) {
+    public CreateFolderScreen(File targetPath, ImportExportStructureScreen parent) {
         super(Text.translatable("exportable_structures.button.create_folder"));
         this.parent = parent;
         this.targetPath = targetPath;

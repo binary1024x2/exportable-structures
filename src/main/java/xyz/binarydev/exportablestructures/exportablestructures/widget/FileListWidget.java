@@ -3,24 +3,28 @@ package xyz.binarydev.exportablestructures.exportablestructures.widget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget;
 import org.apache.commons.io.FilenameUtils;
-import xyz.binarydev.exportablestructures.exportablestructures.screen.ExportStructureScreen;
+import xyz.binarydev.exportablestructures.exportablestructures.screen.ImportExportStructureScreen;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
 public class FileListWidget extends AlwaysSelectedEntryListWidget<FileEntry> {
 
-    private final ExportStructureScreen parent;
+    private final ImportExportStructureScreen parent;
     private CompletableFuture<List<File>> filesFuture;
     //private List<File> files;
     private String path;
     private boolean showFiles = false;
-    private final List<String> allowedExtensions = Collections.emptyList();
+    @SuppressWarnings("FieldMayBeFinal")
+    private List<String> allowedExtensions = new ArrayList<>();
 
-    public FileListWidget(ExportStructureScreen parent, MinecraftClient client, int width, int height, int y,
+    public FileListWidget(ImportExportStructureScreen parent, MinecraftClient client, int width, int height, int y,
                           int itemHeight, String path, FileListWidget oldWidget) {
         super(client, width, height, y, itemHeight);
         this.parent = parent;
@@ -45,7 +49,7 @@ public class FileListWidget extends AlwaysSelectedEntryListWidget<FileEntry> {
         show(tryGet());
     }
 
-    public ExportStructureScreen getParent() {
+    public ImportExportStructureScreen getParent() {
         return parent;
     }
 

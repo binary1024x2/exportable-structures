@@ -10,9 +10,9 @@ import java.io.File;
 public class ConfirmDeleteFileScreen extends Screen {
 
     private final File file;
-    private final ExportStructureScreen parent;
+    private final ImportExportStructureScreen parent;
 
-    public ConfirmDeleteFileScreen(File file, ExportStructureScreen parent) {
+    public ConfirmDeleteFileScreen(File file, ImportExportStructureScreen parent) {
         super(Text.translatable("exportable_structures.button.delete"));
         this.file = file;
         this.parent = parent;

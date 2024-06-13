@@ -16,8 +16,12 @@ import xyz.binarydev.exportablestructures.exportablestructures.widget.FileListWi
 
 import java.io.File;
 import java.util.Objects;
+import java.util.function.BiConsumer;
 
-public class ExportStructureScreen extends Screen {
+public class ImportExportStructureScreen extends Screen {
+
+    public static final byte MODE_SAVE = 1;
+    public static final byte MODE_LOAD = 1;
 
     private TextFieldWidget pathWidget;
     private FileListWidget fileList;
@@ -29,11 +33,34 @@ public class ExportStructureScreen extends Screen {
     private ButtonWidget saveButton;
     private ButtonWidget openFolderButton;
     private final StructureBlockBlockEntity structureBlock;
+    private final byte mode;
+    private String[] allowedExtensions = new String[0];
+    private BiConsumer<ImportExportStructureScreen, File> onFileSelected;
 
-    public ExportStructureScreen(StructureBlockScreen parent, StructureBlockBlockEntity structureBlock) {
+    public ImportExportStructureScreen(StructureBlockScreen parent, StructureBlockBlockEntity structureBlock, byte mode) {
         super(Text.translatable("exportable_structures.screen.export_structure"));
         this.parent = parent;
         this.structureBlock = structureBlock;
+        this.mode = mode;
+    }
+
+    public ImportExportStructureScreen(StructureBlockScreen parent, StructureBlockBlockEntity structureBlock, byte mode, File initialPath) {
+        this(parent, structureBlock, mode);
+        this.currentFile = initialPath;
+    }
+
+    public ImportExportStructureScreen showFiles(String... extensions) {
+        allowedExtensions = extensions;
+        return this;
+    }
+
+    public ImportExportStructureScreen hideFiles() {
+        allowedExtensions = new String[0];
+        return this;
+    }
+
+    public byte getMode() {
+        return mode;
     }
 
     @Override
@@ -42,9 +69,24 @@ public class ExportStructureScreen extends Screen {
         if (this.client == null) {
             return;
         }
-        this.pathWidget = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 22, 200, 20, this.pathWidget, Text.literal(""));
+        this.pathWidget = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 22, 140, 20, this.pathWidget, Text.literal(currentFile == null ? "" : currentFile.toString()));
         this.addSelectableChild(this.pathWidget);
+        addDrawableChild(ButtonWidget.builder(Text.translatable("exportable_structures.button.go"), (button) -> {
+            if (!Objects.equals(pathWidget.getText(), "")) {
+                File path = new File(pathWidget.getText());
+                if (path.exists() && !path.isFile()) {
+                    fileList.setPath(path.toString());
+                    pathWidget.setText(path.toString());
+                    currentFile = path;
+                }
+            }
+        }).dimensions(this.width / 2 + 50, 22, 50, 20).build());
         fileList = this.addDrawableChild(new FileListWidget(this, this.client, this.width, this.height - 112, 48, 36, currentFile == null ? null : currentFile.toString(), this.fileList));
+        if (allowedExtensions.length > 0) {
+            fileList.displayFiles(allowedExtensions);
+        } else {
+            fileList.hideFiles();
+        }
         createFolderButton = addDrawableChild(ButtonWidget.builder(Text.translatable("exportable_structures.button.create_folder"), (button) -> {
             MinecraftClient.getInstance().setScreen(new CreateFolderScreen(currentFile, this));
         }).dimensions(this.width / 2 - 154, this.height - 28, 100, 20).build());
@@ -83,6 +125,10 @@ public class ExportStructureScreen extends Screen {
                 fileList.setPath(selected.toString());
                 pathWidget.setText(selected.toString());
                 currentFile = selected;
+            } else {
+                if (mode == MODE_LOAD && onFileSelected != null) {
+                    onFileSelected.accept(this, selected);
+                }
             }
             updateButtons(null);
         }).dimensions(this.width / 2 - 154, this.height - 52, 100, 20).build());
@@ -104,4 +150,12 @@ public class ExportStructureScreen extends Screen {
         openFolderButton.active = (entry != null);
     }
 
+    public ImportExportStructureScreen setOnFileSelected(BiConsumer<ImportExportStructureScreen, File> onFileSelected) {
+        this.onFileSelected = onFileSelected;
+        return this;
+    }
+
+    public void close() {
+        Objects.requireNonNull(this.client).setScreen(this.parent);
+    }
 }

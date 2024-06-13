@@ -4,7 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget;
 import net.minecraft.text.Text;
-import xyz.binarydev.exportablestructures.exportablestructures.screen.ExportStructureScreen;
+import xyz.binarydev.exportablestructures.exportablestructures.screen.ImportExportStructureScreen;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class FileEntry extends AlwaysSelectedEntryListWidget.Entry<FileEntry> {
 
     private final MinecraftClient client;
-    private final ExportStructureScreen screen;
+    private final ImportExportStructureScreen screen;
     private final FileListWidget owner;
 
     private final File file;

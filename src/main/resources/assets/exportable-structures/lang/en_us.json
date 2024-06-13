@@ -12,5 +12,8 @@
   "exportable_structures.button.open_folder": "Open",
   "exportable_structures.button.create": "Create",
   "exportable_structures.message.confirm_delete": "Do you want to delete '%s'?",
-  "exportable_structures.message.failed_save_structure_file": "Failed to export structure '%s' to '%s'"
+  "exportable_structures.message.failed_save_structure_file": "Failed to export structure '%s' to '%s'",
+  "exportable_structures.button.load": "Load",
+  "exportable_structures.button.import": "Import",
+  "exportable_structures.button.go": "Go"
 }

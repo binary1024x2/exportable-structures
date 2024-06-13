@@ -1,0 +1,3 @@
+accessWidener v2 named
+accessible    field    net/minecraft/structure/StructureTemplateManager    blockLookup    Lnet/minecraft/registry/RegistryEntryLookup;
+accessible    field    net/minecraft/structure/StructureTemplateManager    dataFixer    Lcom/mojang/datafixers/DataFixer;
